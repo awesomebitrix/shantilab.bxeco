@@ -1,0 +1,41 @@
+classBindings:
+  Checker: 'Shantilab\BxEcho\Checker\Checker'
+  DisplayPrinter: 'Shantilab\BxEcho\Printer\DisplayPrinter'
+  DisplayPrinterDecorator: 'Shantilab\BxEcho\Printer\DisplayPrinterDecorator'
+  ConsolePrinter: 'Shantilab\BxEcho\Printer\ConsolePrinter'
+  FilePrinter: 'Shantilab\BxEcho\Printer\FilePrinter'
+  FilePrinterDecorator: 'Shantilab\BxEcho\Printer\FilePrinterDecorator'
+Checker:
+  userIds: null
+  userGroups: null
+  get: null
+  post: null
+  request: null
+  cookies: null
+  sessIds: null
+  session: null
+  url: null
+#  isPost: true
+#  isGet: true
+#  isAjax: true
+  isAdmin: true
+Printer:
+  Display:
+    prettyFormat: true
+    debugOnly: false
+    printFunction: 'print_r'
+    Add:
+      htmlTag: 'pre'
+      deviderSymb: '-'
+      deviderCnt: '100'
+      printFunction: 'print_r'
+  Console:
+    Add:
+  File:
+    type: 'write'
+    path: '/../bx_log.log'
+    append: true
+    prettyFormat: true
+    Add:
+      deviderSymb: '-'
+      deviderCnt: '80'
