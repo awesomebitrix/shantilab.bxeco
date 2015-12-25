@@ -40,7 +40,7 @@ abstract class BasePrinter{
      * @param array $options
      */
     public function setOptions(array $options){
-        $this->options = $this->options + $options;
+        $this->options = $options + $this->options;
     }
 
     /**
@@ -58,6 +58,6 @@ abstract class BasePrinter{
         $type = str_replace('Printer', '', array_pop(explode('\\', get_called_class())));
         $params = $this->config->getConfig('Printer' . '\\' . $type);
         unset($params['Add']);
-        $this->options = $this->options + $params;
+        $this->options = $params + $this->options;
     }
 }
