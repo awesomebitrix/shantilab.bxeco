@@ -8,7 +8,7 @@
  * @param bool|true $showImmidiatly
  * @return BxEcho|void
  */
-function bxe($var = null, $name = null, $options = [], CheckerInterface $checker = null, $showImmidiatly = true){
+function bxe($var = null, $name = null, $options = [], Shantilab\BxEcho\Checker\CheckerInterface $checker = null, $showImmidiatly = true){
 
     if ($showImmidiatly)
         return ((new BxEcho($var, $name, $options, $checker))->show());
