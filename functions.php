@@ -9,9 +9,10 @@
  * @return BxEcho|void
  */
 function bxe($var = null, $name = null, $options = [], Shantilab\BxEcho\Checker\CheckerInterface $checker = null, $showImmidiatly = true){
+    $bxEcho = new BxEcho($var, $name, $options, $checker);
 
     if ($showImmidiatly)
-        return ((new BxEcho($var, $name, $options, $checker))->show());
+        $bxEcho->show();
 
-    return (new BxEcho($var, $name, $options, $checker));
+    return $bxEcho;
 }
