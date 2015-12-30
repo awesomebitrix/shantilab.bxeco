@@ -19,7 +19,7 @@ class Config
      */
     public function __construct()
     {
-        $this->file = __DIR__ . '/../settings.yaml';
+        $this->file = __DIR__ . '/../settings.yml';
     }
 
     /**

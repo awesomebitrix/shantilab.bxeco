@@ -11,25 +11,7 @@ use \Bitrix\Main\IO\File;
  */
 class FilePrinter extends BasePrinter implements PrinterInterface
 {
-    /**
-     * @var
-     */
-    protected $file;
-
-    /**
-     * FilePrinter constructor.
-     * @param null $data
-     * @param array $options
-     */
-    public function __construct($data = null, array $options = [])
-    {
-        parent::__construct($data, $options);
-
-        if (isset($options['path']))
-            $this->setOptions(['path' => $options['path']]);
-    }
-
-    /**
+     /**
      * @param null $data
      */
     public function fire($data = null)
@@ -38,23 +20,17 @@ class FilePrinter extends BasePrinter implements PrinterInterface
             throw new \Shantilab\BxEcho\Exceptions\EmptyFilePathException();
         }
 
-        if (!$this->options['append'] && $this->file->isExists())
-            $this->file->delete();
+        $file = new File(Application::getDocumentRoot() . $this->options['path']);
+        if ($file->isFile())
+            throw new \Shantilab\BxEcho\Exceptions\InvalidFilePathException(Application::getDocumentRoot() . $this->options['path']);
+
+        if (!$this->options['append'] && $file->isExists())
+            $file->delete();
 
         if ($data)
             $this->printToFile($data);
         else
             $this->printToFile($this->data);
-    }
-
-    /**
-     * @param array $options
-     */
-    public function setOptions(array $options){
-        parent::setOptions($options);
-        $this->file = new File(Application::getDocumentRoot() . $this->options['path']);
-        if (!$this->file->isFile())
-            throw new \Shantilab\BxEcho\Exceptions\InvalidFilePathException(Application::getDocumentRoot() . $this->options['path']);
     }
 
     /**
